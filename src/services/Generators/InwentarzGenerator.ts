@@ -16,7 +16,7 @@ const generateSingleInwentarz = async () => {
         .setCena(faker.number.float({ min: 1, max: 10000, precision: 2 }))
         .setPracownicy(getIdsOfDocuments(pracownicyAdministracjiIds));
 
-    if (Math.random() > 0.5) {
+    if (faker.datatype.boolean()) {
         inwentarzBuilder.setOpis(faker.commerce.productDescription());
     }
 

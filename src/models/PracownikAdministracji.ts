@@ -1,15 +1,15 @@
-import { Pracownik } from '../types/Pracownik';
+import { Pracownik } from './Pracownik';
 import BuilderOf from '../types/Builder';
 
 export class PracownikAdministracji {
-    constructor(public numerTelefonu: string, public pracownik: Pracownik) {}
+    constructor(public specjalizacja: string, public pracownik: Pracownik) {}
 }
 
 export class PracownikAdministracjiBuilder implements BuilderOf<PracownikAdministracji> {
     private pracownikAdministracji = {} as PracownikAdministracji;
 
-    public setNumerTelefonu(numerTelefonu: string): PracownikAdministracjiBuilder {
-        this.pracownikAdministracji.numerTelefonu = numerTelefonu;
+    public setSpecjalizacja(specjalizacja: string): PracownikAdministracjiBuilder {
+        this.pracownikAdministracji.specjalizacja = specjalizacja;
         return this;
     }
 

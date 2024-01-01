@@ -1,14 +1,11 @@
-// import { ObjectId } from "mongodb";
 import BuilderOf from '../types/Builder';
 
-export default class Inwentarz {
-    constructor(
-        public nazwa: string,
-        public ilosc: number,
-        public cena: number,
-        public pracownicy: string[],
-        public opis?: string,
-    ) {}
+export default interface Inwentarz {
+    nazwa: string;
+    ilosc: number;
+    cena: number;
+    pracownicy: string[];
+    opis?: string;
 }
 
 export class InwentarzBuilder implements BuilderOf<Inwentarz> {

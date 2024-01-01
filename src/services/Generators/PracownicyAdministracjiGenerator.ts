@@ -5,11 +5,11 @@ import syncGenerator from '../../utils/SyncDocumentGenerator';
 
 const generateSinglePracownikAdministracji = () => {
     return new PracownikAdministracjiBuilder()
-        .setNumerTelefonu(faker.phone.number())
+        .setSpecjalizacja(faker.commerce.department())
         .setPracownik(generatePracownik())
         .build();
 };
 
-const generatePracownicyAdministracji = syncGenerator<PracownikAdministracji>(generateSinglePracownikAdministracji);
+const generatePracownikasAdministracji = syncGenerator<PracownikAdministracji>(generateSinglePracownikAdministracji);
 
-export default generatePracownicyAdministracji;
+export default generatePracownikasAdministracji;
