@@ -1,0 +1,43 @@
+version: '3.7'
+
+services:
+  mongo-express:
+    container_name: mongo-express-2
+    image: mongo-express
+    restart: always
+    depends_on:
+      - mongodb
+    ports:
+      - 8081:8081
+    environment:
+      ME_CONFIG_MONGODB_ADMINUSERNAME: root
+      ME_CONFIG_MONGODB_ADMINPASSWORD: example
+      ME_CONFIG_MONGODB_URL: mongodb://root:rootpassword@mongodb:27017/
+
+
+  mongodb:
+    image: mongo:latest 
+    container_name: mongodb-2
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: rootpassword
+    ports:
+      - 27017:27017 
+    volumes:
+      - mongodb_data_cont:/data/db
+  
+  database-scripts:
+    build: .
+    container_name: database-scripts
+    depends_on:
+      - mongodb
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: rootpassword
+
+networks:
+  default:
+    name: mongo_net
+    driver: bridge
+volumes:
+  mongodb_data_cont:
