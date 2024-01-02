@@ -4,7 +4,6 @@ import { asyncMeaseureTimeDecorator } from './utils/PerformanceTests';
 
 const main = async () => {
     const db = await connectToDatabase();
-    // initializeCollections(db);
     await generateDocumentsFromMapping(db);
     await closeConnectionToDatabase();
 };

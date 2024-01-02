@@ -5,7 +5,7 @@ WORKDIR /usr/src/app
 # Install dependencies
 COPY package.json .
 COPY package-lock.json .
-RUN npm ci
+RUN npm i
 
 # Copy the application source
 COPY . .
@@ -17,10 +17,9 @@ FROM node:lts-alpine
 WORKDIR /app
 COPY package.json .
 COPY package-lock.json .
-
-RUN npm ci --production
+COPY .prod.env .env
+RUN npm i
 
 COPY --from=build /usr/src/app/dist /app
 
-EXPOSE 8000
-CMD [ "npm", "start"]
+CMD [ "npm", "run","start:build"]

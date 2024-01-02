@@ -37,7 +37,7 @@ services:
 
 networks:
   default:
-    name: mongo_net
+    name: mongo_net_internal
     driver: bridge
 volumes:
   mongodb_data_cont:
