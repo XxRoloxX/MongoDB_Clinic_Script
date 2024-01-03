@@ -3,6 +3,8 @@ import generatePracownikasAdministracji from '../services/Generators/PracownicyA
 import generateRecepjonistas from '../services/Generators/RecepcjonistaGenerator';
 import generateInwentarz from '../services/Generators/InwentarzGenerator';
 import { Document } from 'mongodb';
+import generateKontrakt from '../services/Generators/KontraktGenerator';
+import generateLekarzes from '../services/Generators/LekarzGenerator';
 
 //USE THIS OBJECT GLOBALLY TO ACCESS YOUR COLLECTIONS
 export const COLLECTIONS: DatabaseCollections = {};
@@ -13,6 +15,8 @@ export interface DatabaseCollections {
     readonly inwentarz?: mongoDB.Collection;
     readonly pracownicyAdministracji?: mongoDB.Collection;
     readonly recepcjonisci?: mongoDB.Collection;
+    readonly kontrakt?: mongoDB.Collection;
+    readonly lekarze?: mongoDB.Collection
 }
 
 // PUT YOUR GENERATORS HERE !!!
@@ -35,6 +39,21 @@ export const GeneratorCollectionMapping: GenerationDetails[] = [
         numberOfEntities: 10000,
         collectionName: 'inwentarz',
     },
+    {
+        generatorFunction: generateKontrakt,
+        numberOfEntities: 1000,
+        collectionName: 'kontrakt',
+    },
+    {
+        generatorFunction: generateKontrakt,
+        numberOfEntities: 10000,
+        collectionName: 'kontrakt',
+    },
+    {
+        generatorFunction: generateLekarzes,
+        numberOfEntities: 1000,
+        collectionName: 'lekarze'
+    }
 ];
 
 interface GenerationDetails<T = Document[] | Promise<Document[]>> {
