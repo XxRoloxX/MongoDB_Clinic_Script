@@ -1,8 +1,10 @@
 import BuilderOf from "../types/Builder";
 import { Pracownik } from "./Pracownik";
 
-export class Lekarz {
-    constructor(public numerLicencji: string, public specjalizacja: string, public pracownik: Pracownik) {};
+export interface Lekarz {
+    numerLicencji: string,
+    specjalizacja: string,
+    pracownik: Pracownik
 }
 
 export class LekarzBuilder implements BuilderOf<Lekarz> {
