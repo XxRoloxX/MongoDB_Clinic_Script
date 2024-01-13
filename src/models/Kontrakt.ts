@@ -1,11 +1,12 @@
-import BuilderOf from "../types/Builder";
+import BuilderOf from '../types/Builder';
+import mongodb from 'mongodb';
 
 export interface Kontrakt {
     dataPoczatkowa: Date;
     dataKoncowa: Date;
     wartoscKontraktu: number;
     opis: string;
-    idPracownikaAdministracji: string;
+    idPracownikaAdministracji: mongodb.ObjectId;
 }
 
 export class KontraktBuilder implements BuilderOf<Kontrakt> {
@@ -31,7 +32,7 @@ export class KontraktBuilder implements BuilderOf<Kontrakt> {
         return this;
     }
 
-    public setIdPracownikaAdministracji(idPracownikaAdministracji: string): KontraktBuilder {
+    public setIdPracownikaAdministracji(idPracownikaAdministracji: mongodb.ObjectId): KontraktBuilder {
         this.kontrakt.idPracownikaAdministracji = idPracownikaAdministracji;
         return this;
     }

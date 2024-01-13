@@ -1,15 +1,5 @@
-import { connectToDatabase, closeConnectionToDatabase } from './services/Database.service';
-import { COLLECTIONS, generateDocumentsFromMapping, initializeCollections } from './types/CollectionDocumentMapping';
-import { asyncMeaseureTimeDecorator } from './utils/PerformanceTests';
-
-const main = async () => {
-    const db = await connectToDatabase();
-    await generateDocumentsFromMapping(db);
-    await closeConnectionToDatabase();
-};
-
-const measuredMain = asyncMeaseureTimeDecorator(main);
-// measuredMain();
+import { connectToDatabase, closeConnectionToDatabase } from '../services/Database.service';
+import { COLLECTIONS, initializeCollections } from '../types/CollectionDocumentMapping';
 
 const sumOfInwentarz = [
     {
@@ -24,6 +14,10 @@ const sumOfInwentarz = [
         },
     },
 ];
+
+// type collectionQueryMethod =
+
+const executeAggregationQuery = async (collection: DatabaseCollections) => {};
 
 const mainQuery = async () => {
     const db = await connectToDatabase();

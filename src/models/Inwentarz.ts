@@ -1,10 +1,11 @@
 import BuilderOf from '../types/Builder';
+import mongodb from 'mongodb';
 
 export default interface Inwentarz {
     nazwa: string;
     ilosc: number;
     cena: number;
-    pracownicy: string[];
+    pracownicy: mongodb.ObjectId[];
     opis?: string;
 }
 
@@ -26,7 +27,7 @@ export class InwentarzBuilder implements BuilderOf<Inwentarz> {
         return this;
     }
 
-    public setPracownicy(pracownicy: string[]): InwentarzBuilder {
+    public setPracownicy(pracownicy: mongodb.ObjectId[]): InwentarzBuilder {
         this.inwentarz.pracownicy = pracownicy;
         return this;
     }

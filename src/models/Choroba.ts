@@ -1,7 +1,8 @@
 import BuilderOf from '../types/Builder';
 import { JednostkaChorobowa } from './JednostkaChorobowa';
 import KartaChorob from './KartaChorob';
-import  Przebieg  from './Przebieg';
+import Przebieg from './Przebieg';
+import mongodb from 'mongodb';
 
 export default interface Choroba {
     dataRozpoczecia: Date;
@@ -9,8 +10,8 @@ export default interface Choroba {
     zalecaneLeczenie: string;
     status: string;
     przebieg?: Przebieg[];
-    idJednostkiChorobowej: string;
-    idPacjenta: string;
+    idJednostkiChorobowej: mongodb.ObjectId;
+    idPacjenta: mongodb.ObjectId;
 }
 
 export class ChorobaBuilder implements BuilderOf<Choroba> {
@@ -40,12 +41,12 @@ export class ChorobaBuilder implements BuilderOf<Choroba> {
         return this;
     }
 
-    public setIdJednostkiChorobowej(idJednostkiChorobowej: string): ChorobaBuilder {
+    public setIdJednostkiChorobowej(idJednostkiChorobowej: mongodb.ObjectId): ChorobaBuilder {
         this.choroba.idJednostkiChorobowej = idJednostkiChorobowej;
         return this;
     }
 
-    public setIdPacjenta(idPacjenta: string): ChorobaBuilder {
+    public setIdPacjenta(idPacjenta: mongodb.ObjectId): ChorobaBuilder {
         this.choroba.idPacjenta = idPacjenta;
         return this;
     }

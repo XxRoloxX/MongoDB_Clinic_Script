@@ -1,13 +1,14 @@
 import { Lekarz } from './Lekarz';
-import { ProceduraMedyczna } from './ProceduraMedyczna'
-import { Pacjent } from './Pacjent'
+import { ProceduraMedyczna } from './ProceduraMedyczna';
+import { Pacjent } from './Pacjent';
 import BuilderOf from '../types/Builder';
+import mongodb from 'mongodb';
 
 export interface Skierowanie {
     dataWystawienia: Date;
-    idPacjenta: string;
-    idLekarza: string;
-    idProceduryMedycznej: string;
+    idPacjenta: mongodb.ObjectId;
+    idLekarza: mongodb.ObjectId;
+    idProceduryMedycznej: mongodb.ObjectId;
 }
 
 export class SkierowanieBuilder implements BuilderOf<Skierowanie> {
@@ -18,17 +19,17 @@ export class SkierowanieBuilder implements BuilderOf<Skierowanie> {
         return this;
     }
 
-    public setIdPacjenta(idPacjent: string): SkierowanieBuilder {
+    public setIdPacjenta(idPacjent: mongodb.ObjectId): SkierowanieBuilder {
         this.skierowanie.idPacjenta = idPacjent;
         return this;
     }
 
-    public setIdLekarza(idLekarz: string): SkierowanieBuilder {
+    public setIdLekarza(idLekarz: mongodb.ObjectId): SkierowanieBuilder {
         this.skierowanie.idLekarza = idLekarz;
         return this;
     }
 
-    public setIdProceduryMedycznej(idProceduraMedyczna: string): SkierowanieBuilder {
+    public setIdProceduryMedycznej(idProceduraMedyczna: mongodb.ObjectId): SkierowanieBuilder {
         this.skierowanie.idProceduryMedycznej = idProceduraMedyczna;
         return this;
     }

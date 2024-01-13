@@ -1,14 +1,15 @@
 import { Lekarz } from './Lekarz';
-import { Pacjent } from './Pacjent'
+import { Pacjent } from './Pacjent';
 import BuilderOf from '../types/Builder';
+import mongodb from 'mongodb';
 
 export default interface Recepta {
     dataWystawienia: Date;
     listaLekow: String;
     instrukcje: String;
     uwagi: String;
-    idPacjenta: string;
-    idLekarza: string;
+    idPacjenta: mongodb.ObjectId;
+    idLekarza: mongodb.ObjectId;
 }
 
 export class ReceptaBuilder implements BuilderOf<Recepta> {
@@ -34,12 +35,12 @@ export class ReceptaBuilder implements BuilderOf<Recepta> {
         return this;
     }
 
-    public setIdPacjenta(idPacjent: string): ReceptaBuilder {
+    public setIdPacjenta(idPacjent: mongodb.ObjectId): ReceptaBuilder {
         this.recepta.idPacjenta = idPacjent;
         return this;
     }
 
-    public setIdLekarza(idLekarz: string): ReceptaBuilder {
+    public setIdLekarza(idLekarz: mongodb.ObjectId): ReceptaBuilder {
         this.recepta.idLekarza = idLekarz;
         return this;
     }

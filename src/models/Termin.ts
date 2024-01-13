@@ -1,13 +1,14 @@
 import { Lekarz } from './Lekarz';
-import { Pacjent } from './Pacjent'
+import { Pacjent } from './Pacjent';
 import BuilderOf from '../types/Builder';
+import mongodb from 'mongodb';
 
 export interface Termin {
     status: String;
     dataOd: Date;
     dataDo: Date;
-    idPacjenta: string;
-    idLekarza: string;
+    idPacjenta: mongodb.ObjectId;
+    idLekarza: mongodb.ObjectId;
 }
 
 export class TerminBuilder implements BuilderOf<Termin> {
@@ -27,12 +28,12 @@ export class TerminBuilder implements BuilderOf<Termin> {
         return this;
     }
 
-    public setIdPacjenta(idPacjent: string): TerminBuilder {
+    public setIdPacjenta(idPacjent: mongodb.ObjectId): TerminBuilder {
         this.termin.idPacjenta = idPacjent;
         return this;
     }
 
-    public setIdLekarza(idLekarz: string): TerminBuilder {
+    public setIdLekarza(idLekarz: mongodb.ObjectId): TerminBuilder {
         this.termin.idLekarza = idLekarz;
         return this;
     }

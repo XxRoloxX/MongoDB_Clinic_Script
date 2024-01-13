@@ -10,5 +10,5 @@ const generateRandomEntityFromCollection = async (repository: mongoDB.Collection
 export default generateRandomEntityFromCollection;
 
 export const getIdsOfDocuments = <T extends OptionalId<Document>[]>(documents: T) => {
-    return documents.map((document) => document._id.toString());
+    return documents.map((document) => document._id);
 };
