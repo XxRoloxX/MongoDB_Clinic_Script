@@ -5,7 +5,13 @@ import generateInwentarz from '../services/Generators/InwentarzGenerator';
 import { Document } from 'mongodb';
 import generateKontrakt from '../services/Generators/KontraktGenerator';
 import generateLekarzes from '../services/Generators/LekarzGenerator';
-
+import generateChorobas from '../services/Generators/ChorobaGenerator';
+import generateJednostkaChorobowas from '../services/Generators/JednostkaChorobowaGenerator';
+import generatePacjentas from '../services/Generators/PacjentGenerator';
+import generateProceduraMedycznas from '../services/Generators/ProceduraMedycznaGenerator';
+import generateRecepty from '../services/Generators/ReceptaGenerator';
+import generateSkierowania from '../services/Generators/SkierowanieGenerator';
+import generateTerminy from '../services/Generators/TerminGenerator';
 //USE THIS OBJECT GLOBALLY TO ACCESS YOUR COLLECTIONS
 export const COLLECTIONS: DatabaseCollections = {};
 
@@ -17,6 +23,14 @@ export interface DatabaseCollections {
     readonly recepcjonisci?: mongoDB.Collection;
     readonly kontrakt?: mongoDB.Collection;
     readonly lekarze?: mongoDB.Collection
+    readonly kartyChorob?: mongoDB.Collection;
+    readonly jednostkiChorobowe?: mongoDB.Collection;
+    readonly pacjenci?: mongoDB.Collection;
+    readonly choroby?: mongoDB.Collection;
+    readonly proceduryMedyczne?: mongoDB.Collection;
+    readonly skierowania?: mongoDB.Collection;
+    readonly recepty?: mongoDB.Collection;
+    readonly terminy?: mongoDB.Collection;
 }
 
 // PUT YOUR GENERATORS HERE !!!
@@ -36,7 +50,7 @@ export const GeneratorCollectionMapping: GenerationDetails[] = [
     },
     {
         generatorFunction: generateInwentarz,
-        numberOfEntities: 10000,
+        numberOfEntities: 1000,
         collectionName: 'inwentarz',
     },
     {
@@ -50,10 +64,52 @@ export const GeneratorCollectionMapping: GenerationDetails[] = [
         collectionName: 'kontrakt',
     },
     {
+        generatorFunction: generateJednostkaChorobowas,
+        numberOfEntities: 100,
+        collectionName: 'jednostkiChorobowe'
+    }
+    ,
+    {
+        generatorFunction: generatePacjentas,
+        numberOfEntities: 5000,
+        collectionName: 'pacjenci'
+    },
+    {
         generatorFunction: generateLekarzes,
         numberOfEntities: 1000,
         collectionName: 'lekarze'
-    }
+    },
+    {
+        generatorFunction: generateChorobas,
+        numberOfEntities: 10000,
+        collectionName: 'choroby'
+    },
+    {
+        generatorFunction: generateProceduraMedycznas,
+        numberOfEntities: 100,
+        collectionName: 'proceduryMedyczne'
+    },
+    {
+        generatorFunction: generateSkierowania,
+        numberOfEntities: 5000,
+        collectionName: 'skierowania'
+    },
+
+    {
+        generatorFunction: generateRecepty,
+        numberOfEntities: 3000,
+        collectionName: 'recepty'
+    },
+
+    {
+        generatorFunction: generateTerminy,
+        numberOfEntities: 5000,
+        collectionName: 'terminy'
+    },
+
+
+
+    
 ];
 
 interface GenerationDetails<T = Document[] | Promise<Document[]>> {
