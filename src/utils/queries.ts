@@ -1,5 +1,5 @@
 import { connectToDatabase, closeConnectionToDatabase } from '../services/Database.service';
-import { COLLECTIONS, initializeCollections } from '../types/CollectionDocumentMapping';
+import { COLLECTIONS, initializeCollections, DatabaseCollections } from '../types/CollectionDocumentMapping';
 
 const sumOfInwentarz = [
     {
