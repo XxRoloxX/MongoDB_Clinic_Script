@@ -1,4 +1,4 @@
-export const sumOfInwentarzPerPracownik = [
+export const maxOfInwentarzPerPracownik = [
     {
         $unwind: '$pracownicy',
     },
@@ -25,4 +25,4 @@ export const sumOfInwentarzPerPracownik = [
     },
 ];
 
-export default sumOfInwentarzPerPracownik;
+export default maxOfInwentarzPerPracownik;
